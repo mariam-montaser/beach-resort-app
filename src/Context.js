@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import items from './data';
-//import Client from './Contentful';
+import Client from './Contentful';
 
 //Client.getEntries({
 //     content_type: "beachResort"
@@ -26,47 +26,47 @@ class RoomProvider extends Component {
     }
     
     // get data from contentful.com
-    // getData = async () => {
-    //     try {
-    //         let response = await Client.getEntries({
-    //             content_type = "beachResort",
-    //              order: "sys.createdAt"
-    //              order: "-fields.price"
-    //         })
-    //         let rooms = this.formatData(response.items);
-    //         let featuredRooms = rooms.filter(room => room.featured === true);
-    //         let maxPrice = Math.max(...rooms.map(item => item.price));
-    //         let maxSize = Math.max(...rooms.map(item => item.size));
-    //         this.setState({
-    //             rooms,
-    //             featuredRooms,
-    //             sortedRooms: rooms,
-    //             loading: false,
-    //             price: maxPrice,
-    //             maxPrice,
-    //             maxSize
-    //         })
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
+    getData = async () => {
+        try {
+            let response = await Client.getEntries({
+                content_type: "beachResort",
+                 order: "sys.createdAt"
+                //  order: "-fields.price"
+            })
+            let rooms = this.formatData(response.items);
+            let featuredRooms = rooms.filter(room => room.featured === true);
+            let maxPrice = Math.max(...rooms.map(item => item.price));
+            let maxSize = Math.max(...rooms.map(item => item.size));
+            this.setState({
+                rooms,
+                featuredRooms,
+                sortedRooms: rooms,
+                loading: false,
+                price: maxPrice,
+                maxPrice,
+                maxSize
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     componentDidMount() {
-        // this.getData();
+         this.getData();
         //get data from data.js
-        let rooms = this.formatData(items);
-        let featuredRooms = rooms.filter(room => room.featured === true);
-        let maxPrice = Math.max(...rooms.map(item => item.price));
-        let maxSize = Math.max(...rooms.map(item => item.size));
-        this.setState({
-            rooms,
-            featuredRooms,
-            sortedRooms: rooms,
-            loading: false,
-            price: maxPrice,
-            maxPrice,
-            maxSize
-        })
+        // let rooms = this.formatData(items);
+        // let featuredRooms = rooms.filter(room => room.featured === true);
+        // let maxPrice = Math.max(...rooms.map(item => item.price));
+        // let maxSize = Math.max(...rooms.map(item => item.size));
+        // this.setState({
+        //     rooms,
+        //     featuredRooms,
+        //     sortedRooms: rooms,
+        //     loading: false,
+        //     price: maxPrice,
+        //     maxPrice,
+        //     maxSize
+        // })
     }
 
     formatData(items) {

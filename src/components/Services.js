@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import Title from './Title';
+import { FaCocktail, FaHiking, FaShuttleVan, FaBowlingBall } from 'react-icons/fa';
 
 export default class Services extends Component {
     state = {
-        services:[
+        services: [
             {
-                icon: '',
+                icon: <FaCocktail />,
                 title: 'free cocktails ',
                 info: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             },
             {
-                icon: '',
+                icon: <FaHiking />,
                 title: 'endless hiking',
                 info: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             },
             {
-                icon: '',
+                icon: <FaShuttleVan />,
                 title: 'free shuttle',
                 info: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             },
             {
-                icon: '',
+                icon: <FaBowlingBall />,
                 title: 'games',
                 info: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             }
@@ -44,7 +45,7 @@ export default class Services extends Component {
                     })}
                 </div>
             </section>
-            
+
         )
     }
 }
